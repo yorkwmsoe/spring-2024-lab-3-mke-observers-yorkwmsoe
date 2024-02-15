@@ -52,7 +52,7 @@ public class Museum implements Taggable {
      */
     @Override
     public void taggedBy(MobileEntity entity) {
-        // TODO: Replace with your code.
+        entity.notifyObservers(this);
         if (CityMap.DEBUG_LEVEL > 0)
             System.out.println(this + " was tagged by " + entity);
     }

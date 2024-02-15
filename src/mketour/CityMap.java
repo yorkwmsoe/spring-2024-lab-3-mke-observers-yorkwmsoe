@@ -17,11 +17,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import mketour.actors.Bus;
 import mketour.actors.Car;
 import mketour.actors.MobileEntity;
 import mketour.actors.Person;
+import mketour.observers.WoodGathererObserver;
 
 
 /**
@@ -41,7 +43,7 @@ public class CityMap extends Application {
     public static final int NUM_TOURISTS = 15;
 
     // set non-zero to control debugging; return to 0 when demo - critical because this slows simulations
-    public static final int DEBUG_LEVEL = 0;
+    public static final int DEBUG_LEVEL = 1;
 
     /** Width of the "challenges" space on the right side of the map in pixels */
     public static final int MIN_CHALLENGES_WIDTH = 250;
@@ -191,17 +193,19 @@ public class CityMap extends Application {
             mobileEntities.add(bus);
         }
 
+        Museum mkeArtMuseum = new Museum(this);
+
         synchronized (CityMap.class) {
             if(mainCharacter == null) {
                 mainCharacter = new Person(this, goal);
+                mainCharacter.attach(new WoodGathererObserver(challengePane, mkeArtMuseum));
                 mainCharacter.addToCityMap();
             } else {
                 System.out.println("Warning: initializing map more than once!");
             }
         }
+        museums.add(mkeArtMuseum);
 
-        museums.add(new Museum(this));
-
-        // TODO: Add your new Challenges here.
+        addChallengeNode(new Text("Challenge: Find art"));
     }
 }

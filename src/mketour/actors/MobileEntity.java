@@ -12,8 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-
 import mketour.CityMap;
+import mketour.ISubject;
 import mketour.Taggable;
 
 /**
@@ -21,7 +21,7 @@ import mketour.Taggable;
  *
  * Basic functionality to display the item on the cityMap and move in straight lines.
  */
-public abstract class MobileEntity implements Taggable {
+public abstract class MobileEntity extends ISubject implements Taggable {
     /** Height in pixels to show an entity on the cityMap */
     public static final int HEIGHT = 30;
 
@@ -70,6 +70,7 @@ public abstract class MobileEntity implements Taggable {
      * @param image The image representing this entity on the map.
      */
     public MobileEntity(CityMap cityMap, Image image) {
+        super();
         this.cityMap = cityMap;
 
         // We use an EAST_TURNING_MARGIN to allow for the lake boundary.

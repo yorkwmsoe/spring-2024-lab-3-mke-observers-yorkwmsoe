@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import mketour.CityMap;
+import mketour.IObserver;
+import mketour.Taggable;
 
 /**
  * The main character in the game.
@@ -29,6 +31,13 @@ public class Person extends MobileEntity {
         setName("You");
         stepSize = new Point2D(0,0);
         this.goal = goal;
+    }
+
+    @Override
+    public void notifyObservers(Taggable context) {
+        for(IObserver observer : observers) {
+            detach(observer.update(context));
+        }
     }
 
     /**
