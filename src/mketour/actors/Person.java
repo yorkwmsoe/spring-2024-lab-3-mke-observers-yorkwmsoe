@@ -1,7 +1,7 @@
 /*
  * Course:     SWE 2410
  * Assignment: MKETour
- * Author:     Dr. Yoder and YOUR NAME HERE
+ * Author:     Dr. Yoder and Billy York
  */
 package mketour.actors;
 
@@ -14,6 +14,9 @@ import javafx.scene.shape.Circle;
 import mketour.CityMap;
 import mketour.IObserver;
 import mketour.Taggable;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * The main character in the game.
@@ -35,8 +38,12 @@ public class Person extends MobileEntity {
 
     @Override
     public void notifyObservers(Taggable context) {
+        Set<IObserver> observersToRemove = new HashSet<>();
         for(IObserver observer : observers) {
-            detach(observer.updateObserver(context));
+            observersToRemove.add(observer.updateObserver(context));
+        }
+        for (IObserver observer : observersToRemove) {
+            detach(observer);
         }
     }
 

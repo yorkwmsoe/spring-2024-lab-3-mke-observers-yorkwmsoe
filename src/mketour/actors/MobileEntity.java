@@ -1,7 +1,7 @@
 /*
  * Course:     SWE 2410
  * Assignment: MKETour
- * Author:     Dr. Yoder and YOUR NAME HERE
+ * Author:     Dr. Yoder and Billy York
  */
 package mketour.actors;
 
@@ -194,6 +194,7 @@ public abstract class MobileEntity extends ISubject implements Taggable {
     @Override
     public void taggedBy(MobileEntity entity) {
         //TODO: Replace this printout with your code!
+        entity.notifyObservers(this);
         if ( CityMap.DEBUG_LEVEL > 0 )
             System.out.println(this + " tagged by  " + entity);
     }

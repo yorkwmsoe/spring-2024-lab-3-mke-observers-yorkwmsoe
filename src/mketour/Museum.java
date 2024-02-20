@@ -1,7 +1,7 @@
 /*
  * Course:     SWE 2410
  * Assignment: MKETour
- * Author:     Dr. Yoder and YOUR NAME HERE
+ * Author:     Dr. Yoder and Billy York
  */
 package mketour;
 
