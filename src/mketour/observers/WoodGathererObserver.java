@@ -38,7 +38,7 @@ public class WoodGathererObserver implements IObserver {
      * @return This instance if it has completed its task, so it can be removed, or null if the wrong context notified it.
      */
     @Override
-    public IObserver update(Taggable context) {
+    public IObserver updateObserver(Taggable context) {
         if(context.equals(correctContext)){
             challengePane.getChildren().add(label);
             challengePane.getChildren().add(artworkView);

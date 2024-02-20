@@ -20,7 +20,7 @@ public abstract class ISubject {
 
     public void notifyObservers(Taggable context) {
         for(IObserver observer : observers) {
-            observer.update(context);
+            observer.updateObserver(context);
         }
     }
 }

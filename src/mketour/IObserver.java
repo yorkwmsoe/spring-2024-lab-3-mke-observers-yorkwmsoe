@@ -1,5 +1,5 @@
 package mketour;
 
 public interface IObserver {
-    public IObserver update(Taggable context);
+    public IObserver updateObserver(Taggable context);
 }

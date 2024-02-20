@@ -36,7 +36,7 @@ public class Person extends MobileEntity {
     @Override
     public void notifyObservers(Taggable context) {
         for(IObserver observer : observers) {
-            detach(observer.update(context));
+            detach(observer.updateObserver(context));
         }
     }
 
