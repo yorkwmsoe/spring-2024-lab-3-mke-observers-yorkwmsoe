@@ -1,7 +1,7 @@
 /*
  * Course:     SWE 2410
  * Assignment: MKETour
- * Author:     Dr. Yoder and YOUR NAME HERE
+ * Author:     Dr. Yoder and Billy York
  */
 package mketour;
 
@@ -17,13 +17,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import mketour.actors.Bus;
 import mketour.actors.Car;
 import mketour.actors.MobileEntity;
 import mketour.actors.Person;
-import mketour.observers.WoodGathererObserver;
+import mketour.observers.*;
 
 
 /**
@@ -198,14 +197,14 @@ public class CityMap extends Application {
         synchronized (CityMap.class) {
             if(mainCharacter == null) {
                 mainCharacter = new Person(this, goal);
+                mainCharacter.attach(new MSOELicensePlateObserver(challengePane));
                 mainCharacter.attach(new WoodGathererObserver(challengePane, mkeArtMuseum));
+                mainCharacter.attach(new BusLicensePlateObserver(challengePane));
                 mainCharacter.addToCityMap();
             } else {
                 System.out.println("Warning: initializing map more than once!");
             }
         }
         museums.add(mkeArtMuseum);
-
-        addChallengeNode(new Text("Challenge: Find art"));
     }
 }
